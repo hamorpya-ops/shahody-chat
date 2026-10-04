@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shahody Chat</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#111b21;height:100vh;font-family:system-ui;display:flex;justify-content:center}
+.phone{width:100%;max-width:420px;height:100dvh;background:#efeae2;display:flex;flex-direction:column}
+.header{background:#008069;color:#fff;padding:12px;display:flex;align-items:center;gap:12px}
+.header img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid #fff}
+.chat{flex:1;padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:78%;padding:8px 10px;border-radius:8px;font-size:14px}
+.me{align-self:flex-start;background:#d9fdd3}
+.her{align-self:flex-end;background:#fff}
+.time{font-size:10px;color:#666;margin-top:4px;text-align:left}
+.input{padding:8px;background:#f0f2f5;display:flex;gap:8px}
+.input input{flex:1;padding:12px 16px;border-radius:22px;border:none;outline:none}
+.input button{background:#008069;color:#fff;border:none;width:44px;height:44px;border-radius:50%}
+</style>
+</head>
+<body>
+<div class="phone">
+<div class="header"><img src="avatar.jpg"><div><h3>شهد ❤️</h3><span>متصل الآن</span></div></div>
+<div class="chat" id="chat">
+<div class="msg her">ازيك يا حبيبي ❤️<div class="time">10:30</div></div>
+<div class="msg me">الحمد لله يا قلبي<div class="time">10:31</div></div>
+<div class="msg her">وحشتني اوي 🥺<div class="time">10:32</div></div>
+</div>
+<div class="input"><input id="txt" placeholder="اكتب رسالة..."><button onclick="send()">➤</button></div>
+</div>
+<script>
+const c=document.getElementById('chat'),t=document.getElementById('txt'),r=["حبيبي ❤️","وحشتني","بحبك 😍","❤️❤️"];
+function send(){if(!t.value.trim())return;let m=document.createElement('div');m.className='msg me';m.innerHTML=t.value+'<div class="time">الآن</div>';c.appendChild(m);t.value='';c.scrollTop=c.scrollHeight;setTimeout(()=>{let x=document.createElement('div');x.className='msg her';x.innerHTML=r[Math.floor(Math.random()*r.length)]+'<div class="time">الآن</div>';c.appendChild(x);c.scrollTop=c.scrollHeight},800)}
+t.addEventListener('keypress',e=>{if(e.key==='Enter')send()})
+</script>
+</body>
+</html>
